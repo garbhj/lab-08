@@ -2,6 +2,7 @@ package com.example.lab08;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class CustomList {
     private List<City> cities;
@@ -20,4 +21,17 @@ public class CustomList {
         return cities.contains(city);
     }
 
+    public void deleteCity(City city) {
+        for (int i = 0; i < cities.size(); i++) {
+            if ((city.hashCode() == cities.get(i).hashCode()) && city.equals(cities.get(i))) {
+                cities.remove(cities.get(i));
+                return;
+            }
+        }
+        throw new NoSuchElementException();
+    }
+
+    public int countCities() {
+        return cities.size();
+    }
 }
